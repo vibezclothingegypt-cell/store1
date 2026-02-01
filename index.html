@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibez</title>
+  <link rel="icon" type="image/png" href="logoo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+:root {
+  --forest-green: #1a3a2e;
+  --dark-green: #0f261d;
+  --sage: #b8c5b8;
+  --cream: #f8f4ed;
+  --accent-green: #2d5a45;
+  --light-green: #d4e4d4;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--dark-green);
+  color: var(--cream);
+  overflow-x: hidden;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(15, 38, 29, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(184, 197, 184, 0.2);
+}
+
+nav .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-img {
+  height: 50px;
+  width: auto;
+  cursor: pointer;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-btn {
+  background: none;
+  border: 1px solid rgba(184, 197, 184, 0.4);
+  color: var(--cream);
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-btn:hover {
+  background: var(--accent-green);
+  border-color: var(--sage);
+  transform: translateY(-2px);
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--sage);
+  color: var(--dark-green);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.admin-btn {
+  background: var(--sage);
+  color: var(--dark-green);
+  border: none;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center, var(--forest-green) 0%, var(--dark-green) 70%);
+  padding-top: 80px;
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 10;
+}
+
+.hero-logo {
+  width: 200px;
+  height: auto;
+  margin-bottom: 40px;
+}
+
+.hero h1 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(48px, 8vw, 100px);
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+  line-height: 0.9;
+  color: var(--sage);
+}
+
+.hero p {
+  font-size: 18px;
+  color: var(--sage);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+.cta-btn {
+  background: var(--sage);
+  color: var(--dark-green);
+  border: none;
+  padding: 18px 50px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.4s ease;
+  box-shadow: 0 20px 60px rgba(184, 197, 184, 0.3);
+}
+
+.cta-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 30px 80px rgba(184, 197, 184, 0.5);
+  background: var(--light-green);
+}
+
+.products-section {
+  min-height: 100vh;
+  padding: 120px 40px;
+  background: var(--dark-green);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-header h2 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+  color: var(--sage);
+}
+
+.section-header p {
+  color: var(--sage);
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.products-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 40px;
+}
+
+.product-card {
+  background: var(--forest-green);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  border: 1px solid rgba(184, 197, 184, 0.2);
+}
+
+.product-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 30px 80px rgba(184, 197, 184, 0.3);
+}
+
+.product-img-wrapper {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s ease;
+}
+
+.product-img.flip-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  z-index: 2;
+}
+
+.product-img.flip-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.product-card.is-flip:hover .flip-front {
+  opacity: 0;
+  z-index: 1;
+}
+
+.product-card.is-flip:hover .flip-back {
+  opacity: 1;
+  z-index: 2;
+}
+
+.color-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.product-card:not(.is-flip):hover .product-img {
+  opacity: 0;
+}
+
+.product-card:not(.is-flip):hover .color-overlay {
+  opacity: 1;
+}
+
+.product-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--sage);
+  color: var(--dark-green);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 10;
+}
+
+.product-info {
+  padding: 28px;
+}
+
+.product-name {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--cream);
+}
+
+.product-desc {
+  color: var(--sage);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.product-price {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--sage);
+  margin-bottom: 20px;
+}
+
+.size-selector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.size-btn {
+  padding: 12px;
+  background: transparent;
+  border: 1px solid rgba(184, 197, 184, 0.3);
+  color: var(--cream);
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.size-btn:hover, .size-btn.active {
+  background: var(--sage);
+  color: var(--dark-green);
+  border-color: var(--sage);
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  padding: 16px;
+  background: var(--sage);
+  color: var(--dark-green);
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  background: var(--light-green);
+  transform: translateY(-2px);
+}
+
+.cart-sidebar {
+  position: fixed;
+  right: -450px;
+  top: 0;
+  width: 450px;
+  height: 100vh;
+  background: var(--forest-green);
+  z-index: 2000;
+  transition: right 0.4s ease;
+  border-left: 1px solid rgba(184, 197, 184, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-sidebar.open {
+  right: 0;
+}
+
+.cart-header {
+  padding: 30px;
+  border-bottom: 1px solid rgba(184, 197, 184, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-header h3 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.close-cart {
+  background: none;
+  border: none;
+  color: var(--cream);
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.cart-items {
+  flex: 1;
+  overflow-y: auto;
+  padding: 30px;
+}
+
+.cart-item {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(184, 197, 184, 0.2);
+}
+
+.cart-item-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-name {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.cart-item-size {
+  font-size: 14px;
+  color: var(--sage);
+  margin-bottom: 8px;
+}
+
+.cart-item-price {
+  color: var(--sage);
+  font-weight: 600;
+}
+
+.cart-footer {
+  padding: 30px;
+  border-top: 1px solid rgba(184, 197, 184, 0.2);
+  background: var(--dark-green);
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.checkout-btn {
+  width: 100%;
+  padding: 18px;
+  background: var(--sage);
+  color: var(--dark-green);
+  border: none;
+  border-radius: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.checkout-btn:hover {
+  transform: translateY(-3px);
+  background: var(--light-green);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 3000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--forest-green);
+  border-radius: 24px;
+  padding: 40px;
+  max-width: 500px;
+  width: 90%;
+  border: 1px solid rgba(184, 197, 184, 0.3);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.modal-header h2 {
+  font-size: 28px;
+  color: var(--sage);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--cream);
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.google-signin-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  color: #444;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.google-signin-btn:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--sage);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 14px;
+  background: var(--dark-green);
+  border: 1px solid rgba(184, 197, 184, 0.3);
+  border-radius: 12px;
+  color: var(--cream);
+  font-size: 16px;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+  font-family: 'Inter', sans-serif;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  background: var(--sage);
+  color: var(--dark-green);
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: var(--light-green);
+  transform: translateY(-2px);
+}
+
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 1999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.cart-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.hidden { display: none !important; }
+
+/* ADMIN STYLES */
+.admin-panel {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--dark-green);
+  z-index: 3000;
+  overflow-y: auto;
+  padding: 40px;
+}
+
+.admin-panel.active {
+  display: block;
+}
+
+.admin-header {
+  max-width: 1400px;
+  margin: 0 auto 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-header h1 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 42px;
+  color: var(--sage);
+}
+
+.close-admin-btn {
+  padding: 12px 28px;
+  background: var(--sage);
+  color: var(--dark-green);
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-btn-control {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.admin-btn-primary {
+  background: var(--sage);
+  color: var(--dark-green);
+}
+
+.admin-btn-secondary {
+  background: transparent;
+  color: var(--sage);
+  border: 1px solid var(--sage);
+}
+
+.admin-btn-danger {
+  background: #c73e1d;
+  color: white;
+}
+
+.admin-stats {
+  max-width: 1400px;
+  margin: 0 auto 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: var(--forest-green);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid rgba(184, 197, 184, 0.2);
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--sage);
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: var(--sage);
+  opacity: 0.8;
+  text-transform: uppercase;
+}
+
+.orders-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  gap: 24px;
+}
+
+.order-card {
+  background: var(--forest-green);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid rgba(184, 197, 184, 0.2);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(184, 197, 184, 0.2);
+}
+
+.order-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--sage);
+}
+
+.order-status {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--sage);
+  color: var(--dark-green);
+}
+
+.order-details {
+  margin-bottom: 16px;
+}
+
+.order-detail {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  color: var(--sage);
+}
+
+.order-items {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(184, 197, 184, 0.2);
+}
+
+.order-item {
+  padding: 8px 0;
+  color: var(--cream);
+}
+
+.order-actions {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(184, 197, 184, 0.2);
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.order-action-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-complete {
+  background: #2d5a45;
+  color: white;
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  color: white;
+}
+
+.btn-delete {
+  background: #c73e1d;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  nav .container {
+    padding: 20px;
+  }
+  
+  .logo-img {
+    height: 40px;
+  }
+  
+  .nav-btn {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+  
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cart-sidebar {
+    width: 100%;
+    right: -100%;
+  }
+}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <img src="logo.png" alt="VIBEZ" class="logo-img" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <div class="nav-actions">
+      <button class="nav-btn" onclick="scrollToProducts()">Shop</button>
+      <button class="nav-btn" onclick="toggleCart()">
+        Cart
+        <span class="cart-badge hidden" id="cartCount">0</span>
+      </button>
+      <button class="nav-btn" id="authBtn" onclick="toggleAuth()">Sign In</button>
+      <button class="nav-btn admin-btn hidden" id="adminBtn" onclick="openAdminPanel()">Admin</button>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <img src="logo.png" alt="VIBEZ" class="hero-logo">
+    <h1>VIBEZ</h1>
+    <p>Premium Collection 2026</p>
+    <button class="cta-btn" onclick="scrollToProducts()">Explore Collection</button>
+  </div>
+</section>
+
+<section class="products-section" id="productsSection">
+  <div class="section-header">
+    <h2>Latest Drops</h2>
+    <p>Curated Selection</p>
+  </div>
+  <div class="products-grid" id="productsGrid"></div>
+</section>
+
+<section class="products-section" id="ramadanSection" style="background: linear-gradient(135deg, var(--forest-green) 0%, var(--dark-green) 100%);">
+  <div class="section-header">
+    <h2>Ramadan Collection</h2>
+    <p>Holy Month Specials</p>
+  </div>
+  <div class="products-grid" id="ramadanGrid"></div>
+</section>
+
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>Your Cart</h3>
+    <button class="close-cart" onclick="toggleCart()">×</button>
+  </div>
+  <div class="cart-items" id="cartItemsContainer">
+    <p style="text-align: center; color: var(--sage); margin-top: 40px;">Your cart is empty</p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total</span>
+      <span id="cartTotal">0 LE</span>
+    </div>
+    <button class="checkout-btn" onclick="initiateCheckout()">Checkout via WhatsApp</button>
+  </div>
+</div>
+
+<div class="modal" id="authModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Sign In</h2>
+      <button class="modal-close" onclick="closeAuthModal()">×</button>
+    </div>
+    <div style="padding: 20px 0; text-align: center;">
+      <button class="google-signin-btn" onclick="handleGoogleSignIn()">
+        <svg width="20" height="20" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+        </svg>
+        Sign in with Google
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="checkoutModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Complete Your Order</h2>
+      <button class="modal-close" onclick="closeCheckoutModal()">×</button>
+    </div>
+    <form onsubmit="handleCheckout(event)">
+      <div class="form-group">
+        <label>Full Name *</label>
+        <input type="text" id="customerName" required>
+      </div>
+      <div class="form-group">
+        <label>Phone Number *</label>
+        <input type="tel" id="phoneNumber" required>
+      </div>
+      <div class="form-group">
+        <label>Delivery Address *</label>
+        <input type="text" id="address" required>
+      </div>
+      <button type="submit" class="submit-btn">Confirm Order</button>
+    </form>
+  </div>
+</div>
+
+<div class="admin-panel" id="adminPanel">
+  <div class="admin-header">
+    <h1>Admin Panel</h1>
+    <button class="close-admin-btn" onclick="closeAdminPanel()">Close</button>
+  </div>
+  
+  <div style="max-width: 1400px; margin: 0 auto 20px; display: flex; gap: 12px; flex-wrap: wrap;">
+    <button class="admin-btn-control admin-btn-primary" onclick="showAddOrderModal()">⚡ Quick Order</button>
+    <button class="admin-btn-control admin-btn-primary" onclick="showAddProductModal()">➕ Add Product</button>
+    <button class="admin-btn-control admin-btn-secondary" onclick="exportOrders()">Export</button>
+    <button class="admin-btn-control admin-btn-secondary" onclick="restoreOrders()">Restore</button>
+    <button class="admin-btn-control admin-btn-danger" onclick="removeAllOrders()">Clear All</button>
+  </div>
+  
+  <div class="admin-stats">
+    <div class="stat-card">
+      <div class="stat-value" id="totalOrders">0</div>
+      <div class="stat-label">Total Orders</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="pendingOrders">0</div>
+      <div class="stat-label">Pending</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="completedOrders">0</div>
+      <div class="stat-label">Completed</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="totalRevenue">0 LE</div>
+      <div class="stat-label">Revenue</div>
+    </div>
+  </div>
+  
+  <div class="orders-grid" id="ordersGrid">
+    <p style="text-align: center; color: var(--sage); margin-top: 40px;">No orders yet</p>
+  </div>
+</div>
+
+<div class="modal" id="addOrderModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>⚡ Quick Add Order</h2>
+      <button class="modal-close" onclick="closeAddOrderModal()">×</button>
+    </div>
+    <form onsubmit="handleAddOrder(event)">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" id="addCustomerName" required autofocus placeholder="Customer name">
+      </div>
+      <div class="form-group">
+        <label>Phone</label>
+        <input type="tel" id="addPhoneNumber" required placeholder="Phone number">
+      </div>
+      <div class="form-group">
+        <label>Address</label>
+        <input type="text" id="addAddress" required placeholder="Delivery address">
+      </div>
+      <div class="form-group">
+        <label>Total (LE)</label>
+        <input type="number" id="addOrderTotal" required min="0" placeholder="0">
+      </div>
+      <div class="form-group">
+        <label>Items</label>
+        <textarea id="addOrderNotes" placeholder="Quick items: Hoodie size M, Shirt size L..."></textarea>
+      </div>
+      <button type="submit" class="submit-btn">✓ Add</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal" id="addProductModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>➕ Quick Add Product</h2>
+      <button class="modal-close" onclick="closeAddProductModal()">×</button>
+    </div>
+    <form onsubmit="handleAddProduct(event)">
+      <div class="form-group">
+        <label>Product Name</label>
+        <input type="text" id="productName" required autofocus placeholder="e.g., New Hoodie">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input type="text" id="productDesc" required placeholder="Short description">
+      </div>
+      <div class="form-group">
+        <label>Price (LE)</label>
+        <input type="number" id="productPrice" required min="0" placeholder="600">
+      </div>
+      <div class="form-group">
+        <label>Image Filename</label>
+        <input type="text" id="productImg" required placeholder="WhatsApp Image 2026-01-30 at 5.07.13 PM.jpeg">
+      </div>
+      <div class="form-group">
+        <label>Badge (Optional)</label>
+        <input type="text" id="productBadge" placeholder="NEW, SALE, SIGNATURE...">
+      </div>
+      <button type="submit" class="submit-btn">✓ Add Product</button>
+    </form>
+  </div>
+</div>
+
+<script>
+const WHATSAPP_NUMBER = "201200184744";
+const ADMIN_EMAIL = "vibezclothingegypt@gmail.com";
+
+const defaultProducts = [
+  {
+    name: "Dimension Hoodie",
+    desc: "Green oversized hoodie with dimension print",
+    price: 600,
+    currency: "LE",
+    img: "WhatsApp Image 2026-01-30 at 5.07.13 PM.jpeg",
+    plainColor: "#2d5a45",
+    badge: "NEW"
+  },
+  {
+    name: "1992 Hoodie",
+    desc: "Black hoodie with vintage 1992 design",
+    price: 600,
+    currency: "LE",
+    img: "WhatsApp Image 2026-01-30 at 5.07.13 PM (1).jpeg",
+    plainColor: "#1a1a1a",
+    badge: ""
+  },
+  {
+    name: "Cool Boy Hoodie",
+    desc: "Green hoodie with retro cool boy graphic",
+    price: 600,
+    currency: "LE",
+    img: "WhatsApp Image 2026-01-30 at 5.07.14 PM.jpeg",
+    plainColor: "#2d5a45",
+    badge: ""
+  },
+  {
+    name: "Universe Station Hoodie",
+    desc: "Cream hoodie with space-themed design",
+    price: 600,
+    currency: "LE",
+    img: "WhatsApp Image 2026-01-30 at 5.07.14 PM (1).jpeg",
+    plainColor: "#f8f4ed",
+    badge: "NEW"
+  },
+  {
+    name: "Urban Hoodie",
+    desc: "White oversized hoodie with urban graphic",
+    price: 600,
+    currency: "LE",
+    img: "WhatsApp Image 2026-01-30 at 5.07.14 PM (2).jpeg",
+    plainColor: "#ffffff",
+    badge: ""
+  },
+  {
+    name: "Vibez Signature Hoodie",
+    desc: "White hoodie with colorful vibez design",
+    price: 600,
+    currency: "LE",
+    img: "WhatsApp Image 2026-01-30 at 5.07.14 PM (3).jpeg",
+    plainColor: "#ffffff",
+    badge: "SIGNATURE"
+  },
+  {
+    name: "Red Moon Hoodie",
+    desc: "Black hoodie with striking red moon graphic",
+    price: 600,
+    currency: "LE",
+    img: "WhatsApp Image 2026-01-30 at 5.07.14 PM (4).jpeg",
+    plainColor: "#1a1a1a",
+    badge: ""
+  }
+];
+
+const ramadanProducts = [
+  {
+    name: "Ramadan Kareem Hoodie",
+    desc: "Elegant design for the holy month",
+    price: 700,
+    currency: "LE",
+    img: "WhatsApp Image 2026-01-30 at 3.04.55 PM.jpeg",
+    backImg: "ramadan_kareem.jpg",
+    badge: "RAMADAN"
+  },
+  {
+    name: "Ramadan Blessing Hoodie",
+    desc: "Blessed moments collection",
+    price: 700,
+    currency: "LE",
+    img: "WhatsApp Image 2026-01-30 at 3.05.15 PM.jpeg",
+    backImg: "ramadan_kareem.jpg",
+    badge: "RAMADAN"
+  },
+  {
+    name: "Holy Month Hoodie",
+    desc: "Spiritual and stylish design",
+    price: 700,
+    currency: "LE",
+    img: "WhatsApp Image 2026-01-30 at 3.05.37 PM.jpeg",
+    backImg: "ramadan_kareem.jpg",
+    badge: "RAMADAN"
+  },
+  {
+    name: "Eid Celebration Hoodie",
+    desc: "Perfect for festive occasions",
+    price: 700,
+    currency: "LE",
+    img: "WhatsApp Image 2026-01-30 at 3.05.58 PM.jpeg",
+    backImg: "ramadan_kareem.jpg",
+    badge: "RAMADAN"
+  }
+];
+
+let products = JSON.parse(localStorage.getItem('vibez_products') || JSON.stringify(defaultProducts));
+let cart = JSON.parse(localStorage.getItem('vibez_cart') || '[]');
+let selectedSizes = {};
+let currentUser = JSON.parse(localStorage.getItem('vibez_user') || 'null');
+let orders = JSON.parse(localStorage.getItem('vibez_orders') || '[]');
+
+renderProducts();
+renderRamadanProducts();
+updateCartUI();
+updateAuthUI();
+
+function renderProducts() {
+  const grid = document.getElementById('productsGrid');
+  grid.innerHTML = '';
+  
+  products.forEach((product, index) => {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.innerHTML = `
+      <div class="product-img-wrapper">
+        <img src="${product.img}" alt="${product.name}" class="product-img">
+        <div class="color-overlay" style="background-color: ${product.plainColor};"></div>
+        ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">${product.name}</h3>
+        <p class="product-desc">${product.desc}</p>
+        <div class="product-price">${product.price} ${product.currency}</div>
+        <div class="size-selector">
+          <button class="size-btn" onclick="selectSize(${index}, '12')">12</button>
+          <button class="size-btn" onclick="selectSize(${index}, '14')">14</button>
+          <button class="size-btn" onclick="selectSize(${index}, '16')">16</button>
+          <button class="size-btn" onclick="selectSize(${index}, 'S')">S</button>
+          <button class="size-btn" onclick="selectSize(${index}, 'M')">M</button>
+          <button class="size-btn" onclick="selectSize(${index}, 'L')">L</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart(${index})">Add to Cart</button>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function renderRamadanProducts() {
+  const grid = document.getElementById('ramadanGrid');
+  grid.innerHTML = '';
+  
+  ramadanProducts.forEach((product, index) => {
+    const card = document.createElement('div');
+    card.className = 'product-card is-flip';
+    card.innerHTML = `
+      <div class="product-img-wrapper">
+        <img src="${product.img}" alt="${product.name}" class="product-img flip-front">
+        <img src="${product.backImg}" alt="Ramadan Kareem" class="product-img flip-back">
+        ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">${product.name}</h3>
+        <p class="product-desc">${product.desc}</p>
+        <div class="product-price">${product.price} ${product.currency}</div>
+        <div class="size-selector">
+          <button class="size-btn" onclick="selectRamadanSize(${index}, '12')">12</button>
+          <button class="size-btn" onclick="selectRamadanSize(${index}, '14')">14</button>
+          <button class="size-btn" onclick="selectRamadanSize(${index}, '16')">16</button>
+          <button class="size-btn" onclick="selectRamadanSize(${index}, 'S')">S</button>
+          <button class="size-btn" onclick="selectRamadanSize(${index}, 'M')">M</button>
+          <button class="size-btn" onclick="selectRamadanSize(${index}, 'L')">L</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addRamadanToCart(${index})">Add to Cart</button>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function selectSize(productIndex, size) {
+  const card = document.querySelectorAll('#productsGrid .product-card')[productIndex];
+  const sizeButtons = card.querySelectorAll('.size-btn');
+  sizeButtons.forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  selectedSizes[productIndex] = size;
+}
+
+function selectRamadanSize(productIndex, size) {
+  const ramadanKey = `ramadan_${productIndex}`;
+  const card = document.querySelectorAll('#ramadanGrid .product-card')[productIndex];
+  const sizeButtons = card.querySelectorAll('.size-btn');
+  sizeButtons.forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  selectedSizes[ramadanKey] = size;
+}
+
+function addToCart(index) {
+  const size = selectedSizes[index] || 'M';
+  const product = products[index];
+  
+  cart.push({ ...product, size: size });
+  localStorage.setItem('vibez_cart', JSON.stringify(cart));
+  updateCartUI();
+  
+  const btn = event.target;
+  const originalText = btn.textContent;
+  btn.textContent = '✓ Added!';
+  btn.style.background = 'var(--light-green)';
+  setTimeout(() => {
+    btn.textContent = originalText;
+    btn.style.background = 'var(--sage)';
+  }, 1000);
+}
+
+function addRamadanToCart(index) {
+  const ramadanKey = `ramadan_${index}`;
+  const size = selectedSizes[ramadanKey] || 'M';
+  const product = ramadanProducts[index];
+  
+  cart.push({ ...product, size: size });
+  localStorage.setItem('vibez_cart', JSON.stringify(cart));
+  updateCartUI();
+  
+  const btn = event.target;
+  const originalText = btn.textContent;
+  btn.textContent = '✓ Added!';
+  btn.style.background = 'var(--light-green)';
+  setTimeout(() => {
+    btn.textContent = originalText;
+    btn.style.background = 'var(--sage)';
+  }, 1000);
+}
+
+function updateCartUI() {
+  const countBadge = document.getElementById('cartCount');
+  const itemsContainer = document.getElementById('cartItemsContainer');
+  const totalElement = document.getElementById('cartTotal');
+  
+  if (cart.length > 0) {
+    countBadge.classList.remove('hidden');
+    countBadge.textContent = cart.length;
+    
+    itemsContainer.innerHTML = '';
+    let total = 0;
+    
+    cart.forEach(item => {
+      total += item.price;
+      const cartItem = document.createElement('div');
+      cartItem.className = 'cart-item';
+      cartItem.innerHTML = `
+        <img src="${item.img}" alt="${item.name}" class="cart-item-img">
+        <div class="cart-item-info">
+          <div class="cart-item-name">${item.name}</div>
+          <div class="cart-item-size">Size: ${item.size}</div>
+          <div class="cart-item-price">${item.price} ${item.currency}</div>
+        </div>
+      `;
+      itemsContainer.appendChild(cartItem);
+    });
+    
+    totalElement.textContent = `${total} LE`;
+  } else {
+    countBadge.classList.add('hidden');
+    itemsContainer.innerHTML = '<p style="text-align: center; color: var(--sage); margin-top: 40px;">Your cart is empty</p>';
+    totalElement.textContent = '0 LE';
+  }
+}
+
+function updateAuthUI() {
+  const authBtn = document.getElementById('authBtn');
+  const adminBtn = document.getElementById('adminBtn');
+  
+  if (currentUser) {
+    authBtn.textContent = 'Sign Out';
+    if (currentUser.email === ADMIN_EMAIL) {
+      adminBtn.classList.remove('hidden');
+    }
+  } else {
+    authBtn.textContent = 'Sign In';
+    adminBtn.classList.add('hidden');
+  }
+}
+
+function toggleAuth() {
+  if (currentUser) {
+    if (confirm('Sign out?')) {
+      currentUser = null;
+      localStorage.removeItem('vibez_user');
+      updateAuthUI();
+    }
+  } else {
+    document.getElementById('authModal').classList.add('active');
+  }
+}
+
+function handleGoogleSignIn() {
+  const email = prompt('Enter your Google email:');
+  
+  if (email) {
+    if (email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
+      const password = prompt('Admin password:');
+      if (password === 'Khallaf1989') {
+        currentUser = { email: email, isAdmin: true };
+        localStorage.setItem('vibez_user', JSON.stringify(currentUser));
+        updateAuthUI();
+        closeAuthModal();
+        alert('Admin signed in!');
+      } else {
+        alert('Wrong password!');
+      }
+    } else {
+      currentUser = { email: email, isAdmin: false };
+      localStorage.setItem('vibez_user', JSON.stringify(currentUser));
+      updateAuthUI();
+      closeAuthModal();
+      alert('Signed in!');
+    }
+  }
+}
+
+function closeAuthModal() {
+  document.getElementById('authModal').classList.remove('active');
+}
+
+function toggleCart() {
+  const sidebar = document.getElementById('cartSidebar');
+  const overlay = document.getElementById('cartOverlay');
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('active');
+}
+
+function initiateCheckout() {
+  if (cart.length === 0) {
+    alert('Cart is empty!');
+    return;
+  }
+  toggleCart();
+  document.getElementById('checkoutModal').classList.add('active');
+}
+
+function closeCheckoutModal() {
+  document.getElementById('checkoutModal').classList.remove('active');
+}
+
+function generateOrderNumber() {
+  const orderCounter = parseInt(localStorage.getItem('vibez_order_counter') || '0') + 1;
+  localStorage.setItem('vibez_order_counter', orderCounter.toString());
+  return `VBZ${orderCounter.toString().padStart(4, '0')}`;
+}
+
+function handleCheckout(event) {
+  event.preventDefault();
+  
+  const customerName = document.getElementById('customerName').value;
+  const phoneNumber = document.getElementById('phoneNumber').value;
+  const address = document.getElementById('address').value;
+  
+  const orderNumber = generateOrderNumber();
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+  
+  const order = {
+    orderNumber,
+    customerName,
+    phoneNumber,
+    address,
+    items: cart,
+    total,
+    currency: 'LE',
+    status: 'Pending',
+    date: new Date().toISOString()
+  };
+  
+  orders.push(order);
+  localStorage.setItem('vibez_orders', JSON.stringify(orders));
+  
+  let message = `*Order ${orderNumber}*%0A%0A`;
+  message += `*Customer:* ${customerName}%0A`;
+  message += `*Phone:* ${phoneNumber}%0A`;
+  message += `*Address:* ${address}%0A%0A`;
+  message += `*Items:*%0A`;
+  
+  cart.forEach(item => {
+    message += `• ${item.name} (${item.size}) - ${item.price} LE%0A`;
+  });
+  
+  message += `%0A*Total:* ${total} LE`;
+  
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
+  
+  cart = [];
+  localStorage.setItem('vibez_cart', JSON.stringify(cart));
+  updateCartUI();
+  closeCheckoutModal();
+  alert(`Order ${orderNumber} placed!`);
+}
+
+function scrollToProducts() {
+  document.getElementById('productsSection').scrollIntoView({ behavior: 'smooth' });
+}
+
+function openAdminPanel() {
+  if (!currentUser || currentUser.email !== ADMIN_EMAIL) {
+    alert('Access denied!');
+    return;
+  }
+  document.getElementById('adminPanel').classList.add('active');
+  renderOrders();
+  updateAdminStats();
+}
+
+function closeAdminPanel() {
+  document.getElementById('adminPanel').classList.remove('active');
+}
+
+function updateAdminStats() {
+  const totalOrders = orders.length;
+  const pendingOrders = orders.filter(o => o.status === 'Pending').length;
+  const completedOrders = orders.filter(o => o.status === 'Completed').length;
+  const totalRevenue = orders.reduce((sum, order) => sum + order.total, 0);
+  
+  document.getElementById('totalOrders').textContent = totalOrders;
+  document.getElementById('pendingOrders').textContent = pendingOrders;
+  document.getElementById('completedOrders').textContent = completedOrders;
+  document.getElementById('totalRevenue').textContent = `${totalRevenue} LE`;
+}
+
+function showAddOrderModal() {
+  document.getElementById('addOrderModal').classList.add('active');
+}
+
+function closeAddOrderModal() {
+  document.getElementById('addOrderModal').classList.remove('active');
+}
+
+function handleAddOrder(event) {
+  event.preventDefault();
+  
+  const customerName = document.getElementById('addCustomerName').value;
+  const phoneNumber = document.getElementById('addPhoneNumber').value;
+  const address = document.getElementById('addAddress').value;
+  const total = parseInt(document.getElementById('addOrderTotal').value);
+  const notes = document.getElementById('addOrderNotes').value;
+  
+  const orderNumber = generateOrderNumber();
+  
+  const order = {
+    orderNumber,
+    customerName,
+    phoneNumber,
+    address,
+    items: notes ? [{ name: notes, size: 'N/A', price: total, currency: 'LE' }] : [],
+    total,
+    currency: 'LE',
+    status: 'Pending',
+    date: new Date().toISOString()
+  };
+  
+  orders.push(order);
+  localStorage.setItem('vibez_orders', JSON.stringify(orders));
+  
+  closeAddOrderModal();
+  renderOrders();
+  updateAdminStats();
+  alert(`Order ${orderNumber} added!`);
+}
+
+function showAddProductModal() {
+  document.getElementById('addProductModal').classList.add('active');
+}
+
+function closeAddProductModal() {
+  document.getElementById('addProductModal').classList.remove('active');
+}
+
+function handleAddProduct(event) {
+  event.preventDefault();
+  
+  const name = document.getElementById('productName').value;
+  const desc = document.getElementById('productDesc').value;
+  const price = parseInt(document.getElementById('productPrice').value);
+  const img = document.getElementById('productImg').value;
+  const badge = document.getElementById('productBadge').value;
+  
+  const newProduct = {
+    name,
+    desc,
+    price,
+    currency: "LE",
+    img,
+    plainColor: "#2d5a45",
+    badge: badge || ""
+  };
+  
+  products.push(newProduct);
+  localStorage.setItem('vibez_products', JSON.stringify(products));
+  
+  closeAddProductModal();
+  renderProducts();
+  alert(`✓ "${name}" added to store!`);
+  
+  document.getElementById('productName').value = '';
+  document.getElementById('productDesc').value = '';
+  document.getElementById('productPrice').value = '';
+  document.getElementById('productImg').value = '';
+  document.getElementById('productBadge').value = '';
+}
+
+function exportOrders() {
+  if (orders.length === 0) {
+    alert('No orders!');
+    return;
+  }
+  
+  const dataStr = JSON.stringify(orders, null, 2);
+  const dataBlob = new Blob([dataStr], { type: 'application/json' });
+  const url = URL.createObjectURL(dataBlob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `vibez_orders_${new Date().toISOString().split('T')[0]}.json`;
+  link.click();
+  URL.revokeObjectURL(url);
+  alert('Exported!');
+}
+
+function restoreOrders() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'application/json';
+  
+  input.onchange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const restoredOrders = JSON.parse(event.target.result);
+        
+        if (confirm(`Restore ${restoredOrders.length} orders?`)) {
+          orders = restoredOrders;
+          localStorage.setItem('vibez_orders', JSON.stringify(orders));
+          
+          const maxOrderNum = Math.max(...orders.map(o => {
+            const num = o.orderNumber.replace('VBZ', '');
+            return parseInt(num) || 0;
+          }));
+          localStorage.setItem('vibez_order_counter', maxOrderNum.toString());
+          
+          renderOrders();
+          updateAdminStats();
+          alert('Restored!');
+        }
+      } catch (error) {
+        alert('Invalid file!');
+      }
+    };
+    reader.readAsText(file);
+  };
+  
+  input.click();
+}
+
+function removeAllOrders() {
+  if (orders.length === 0) {
+    alert('No orders!');
+    return;
+  }
+  
+  if (confirm(`Delete ALL ${orders.length} orders?`)) {
+    if (confirm('Final confirmation?')) {
+      orders = [];
+      localStorage.setItem('vibez_orders', JSON.stringify(orders));
+      localStorage.setItem('vibez_order_counter', '0');
+      renderOrders();
+      updateAdminStats();
+      alert('Deleted!');
+    }
+  }
+}
+
+function deleteOrder(orderNumber) {
+  if (confirm(`Delete ${orderNumber}?`)) {
+    orders = orders.filter(o => o.orderNumber !== orderNumber);
+    localStorage.setItem('vibez_orders', JSON.stringify(orders));
+    renderOrders();
+    updateAdminStats();
+    alert('Deleted!');
+  }
+}
+
+function toggleOrderStatus(orderNumber) {
+  const order = orders.find(o => o.orderNumber === orderNumber);
+  if (order) {
+    order.status = order.status === 'Pending' ? 'Completed' : 'Pending';
+    localStorage.setItem('vibez_orders', JSON.stringify(orders));
+    renderOrders();
+    updateAdminStats();
+  }
+}
+
+function sendWhatsAppMessage(orderNumber) {
+  const order = orders.find(o => o.orderNumber === orderNumber);
+  if (!order) return;
+  
+  let message = `*Order ${order.orderNumber}*%0A%0A`;
+  message += `Dear ${order.customerName},%0A%0A`;
+  message += `Status: *${order.status}*%0A%0A`;
+  
+  if (order.items && order.items.length > 0) {
+    order.items.forEach(item => {
+      message += `• ${item.name} (${item.size})%0A`;
+    });
+  }
+  
+  message += `%0ATotal: ${order.total} LE%0A`;
+  message += `Address: ${order.address}%0A%0A`;
+  message += `Thank you!`;
+  
+  window.open(`https://wa.me/${order.phoneNumber.replace(/[^0-9]/g, '')}?text=${message}`, '_blank');
+}
+
+function renderOrders() {
+  const ordersGrid = document.getElementById('ordersGrid');
+  
+  if (orders.length === 0) {
+    ordersGrid.innerHTML = '<p style="text-align: center; color: var(--sage); margin-top: 40px;">No orders yet</p>';
+    return;
+  }
+  
+  ordersGrid.innerHTML = '';
+  const sortedOrders = [...orders].reverse();
+  
+  sortedOrders.forEach(order => {
+    const orderCard = document.createElement('div');
+    orderCard.className = 'order-card';
+    
+    const orderDate = new Date(order.date).toLocaleString();
+    
+    let itemsList = '';
+    if (order.items && order.items.length > 0) {
+      order.items.forEach(item => {
+        itemsList += `<div class="order-item">• ${item.name} (${item.size}) - ${item.price} LE</div>`;
+      });
+    } else {
+      itemsList = '<div class="order-item">No items</div>';
+    }
+    
+    const statusStyle = order.status === 'Completed' ? 'background: #2d5a45;' : '';
+    
+    orderCard.innerHTML = `
+      <div class="order-header">
+        <div class="order-number">#${order.orderNumber}</div>
+        <div class="order-status" style="${statusStyle}">${order.status}</div>
+      </div>
+      <div class="order-details">
+        <div class="order-detail">
+          <span>Customer:</span>
+          <span>${order.customerName}</span>
+        </div>
+        <div class="order-detail">
+          <span>Phone:</span>
+          <span>${order.phoneNumber}</span>
+        </div>
+        <div class="order-detail">
+          <span>Address:</span>
+          <span>${order.address}</span>
+        </div>
+        <div class="order-detail">
+          <span>Date:</span>
+          <span>${orderDate}</span>
+        </div>
+        <div class="order-detail">
+          <span>Total:</span>
+          <span>${order.total} LE</span>
+        </div>
+      </div>
+      <div class="order-items">${itemsList}</div>
+      <div class="order-actions">
+        <button class="order-action-btn btn-complete" onclick="toggleOrderStatus('${order.orderNumber}')">
+          ${order.status === 'Pending' ? 'Complete' : 'Pending'}
+        </button>
+        <button class="order-action-btn btn-whatsapp" onclick="sendWhatsAppMessage('${order.orderNumber}')">
+          WhatsApp
+        </button>
+        <button class="order-action-btn btn-delete" onclick="deleteOrder('${order.orderNumber}')">
+          Delete
+        </button>
+      </div>
+    `;
+    
+    ordersGrid.appendChild(orderCard);
+  });
+}
+</script>
+
+</body>
+</html>
